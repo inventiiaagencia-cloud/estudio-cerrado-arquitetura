@@ -91,18 +91,18 @@ const ProjectsGrid = () => {
   const [isNight, setIsNight] = useState(false);
 
   return (
-    <section id="obras" className="relative py-32 md:py-40 bg-background border-t border-white/5">
+    <section id="obras" className="relative py-20 md:py-32 bg-background border-t border-white/5">
       <div className="w-full px-0">
-        <div className="container mx-auto px-6 mb-16 md:mb-24 flex flex-col md:flex-row md:items-end justify-between gap-8">
+        <div className="container mx-auto px-6 mb-12 md:mb-20 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
-            <h2 className="text-5xl md:text-7xl font-serif text-white mb-4">Obras</h2>
+            <h2 className="text-4xl md:text-6xl font-serif text-white mb-4">Obras</h2>
             <p className="text-muted-foreground font-mono text-sm tracking-widest uppercase">Portfólio Selecionado</p>
           </div>
           
           <div className="flex items-center gap-1 border border-white/10 p-1">
             <button
               onClick={() => setIsNight(false)}
-              className={`px-6 py-2 text-[10px] font-mono uppercase tracking-[0.2em] transition-all ${
+              className={`px-5 py-1.5 text-[9px] font-mono uppercase tracking-[0.2em] transition-all ${
                 !isNight ? "bg-primary text-white" : "text-muted-foreground hover:text-white"
               }`}
             >
@@ -110,7 +110,7 @@ const ProjectsGrid = () => {
             </button>
             <button
               onClick={() => setIsNight(true)}
-              className={`px-6 py-2 text-[10px] font-mono uppercase tracking-[0.2em] transition-all ${
+              className={`px-5 py-1.5 text-[9px] font-mono uppercase tracking-[0.2em] transition-all ${
                 isNight ? "bg-primary text-white" : "text-muted-foreground hover:text-white"
               }`}
             >
@@ -132,16 +132,16 @@ const ProjectsGrid = () => {
               />
               
               {/* Overlay minimalista */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8 md:p-12">
-                <div className="flex flex-col gap-2">
-                  <span className="font-mono text-[10px] tracking-[0.3em] text-primary uppercase">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6 md:p-8">
+                <div className="flex flex-col gap-1.5">
+                  <span className="font-mono text-[9px] tracking-[0.3em] text-primary uppercase">
                     {project.coordinates}
                   </span>
-                  <h3 className="text-3xl font-serif text-white">{project.name}</h3>
+                  <h3 className="text-2xl font-serif text-white">{project.name}</h3>
                   <p className="text-xs font-light text-white/70 tracking-wider">
                     {project.praise}
                   </p>
-                  <div className="flex items-center gap-4 text-xs font-mono text-white/60 tracking-wider">
+                  <div className="flex items-center gap-3 text-xs font-mono text-white/60 tracking-wider">
                     <span>{project.city}</span>
                     <span className="w-1 h-1 bg-primary rounded-full"></span>
                     <span>{project.year}</span>
@@ -150,11 +150,11 @@ const ProjectsGrid = () => {
               </div>
 
               {/* Legenda visível mobile / sempre */}
-              <div className="absolute bottom-6 left-6 md:hidden">
-                 <span className="font-mono text-[8px] tracking-[0.2em] text-white/50 block mb-1">
+              <div className="absolute bottom-4 left-4 md:hidden">
+                 <span className="font-mono text-[7px] tracking-[0.2em] text-white/50 block mb-1">
                     {project.coordinates}
                   </span>
-                  <h3 className="text-xl font-serif text-white">{project.name}</h3>
+                  <h3 className="text-lg font-serif text-white">{project.name}</h3>
               </div>
             </div>
           ))}
