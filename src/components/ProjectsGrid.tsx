@@ -138,13 +138,15 @@ const ProjectsGrid = () => {
               
               {/* Descrição completa na parte inferior esquerda - visível em todas as telas */}
               <div className="absolute bottom-4 left-4">
-                <span className="font-mono text-[7px] tracking-[0.2em] text-white/50 block mb-1">
-                  {project.coordinates}
-                </span>
-                <h3 className="text-lg font-serif text-white">{project.name}</h3>
-                <p className="text-xs font-mono text-white/60 mb-1">{project.city}</p>
-                <p className="text-xs font-mono text-white/60 mb-1">{project.year}</p>
-                <p className="text-xs font-light text-white/70">{project.praise}</p>
+                <div className="bg-black/30 backdrop-blur-sm rounded-md px-2 py-1 max-w-[200px]">
+                  <span className="font-mono text-[7px] tracking-[0.2em] text-white/50 block mb-1">
+                    {project.coordinates}
+                  </span>
+                  <h3 className="text-lg font-serif text-white">{project.name}</h3>
+                  <p className="text-xs font-mono text-white/60 mb-1">{project.city}</p>
+                  <p className="text-xs font-mono text-white/60 mb-1">{project.year}</p>
+                  <p className="text-xs font-light text-white/70">{project.praise}</p>
+                </div>
               </div>
             </div>
           ))}
