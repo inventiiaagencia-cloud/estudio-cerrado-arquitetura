@@ -91,7 +91,7 @@ const ProjectsGrid = () => {
   const [isNight, setIsNight] = useState(false);
 
   return (
-    <section id="obras" className="relative py-20 md:py-32 bg-background border-t border-white/5">
+    <section id="obras" className="relative py-20 md:pt-32 md:pb-16 bg-background border-t border-white/5">
       <div className="w-full px-0">
         <div className="container mx-auto px-6 mb-12 md:mb-20 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
