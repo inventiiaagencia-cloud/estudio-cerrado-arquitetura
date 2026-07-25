@@ -35,15 +35,12 @@
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
 
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
 
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
 
     --sidebar-border: 220 13% 91%;
@@ -52,39 +49,45 @@
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 0 0% 7%; /* #121212 */
+    --foreground: 0 0% 92%; /* #EAEAEA */
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 0 0% 8%; /* #141416 */
+    --card-foreground: 0 0% 92%; /* #EAEAEA */
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 0 0% 8%; /* #141416 */
+    --popover-foreground: 0 0% 92%; /* #EAEAEA */
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 12 51% 34%; /* #823829 */
+    --primary-foreground: 0 0% 100%; /* #FFFFFF */
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 0 0% 11%; /* #1C1C1F */
+    --secondary-foreground: 0 0% 92%; /* #EAEAEA */
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 0 0% 10%; /* #18181B */
+    --muted-foreground: 0 0% 60%; /* #999994 */
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 12 51% 34%; /* #823829 */
+    --accent-foreground: 0 0% 100%; /* #FFFFFF */
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 57% 38%; /* #9F2B2B */
+    --destructive-foreground: 0 0% 100%; /* #FFFFFF */
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
+    --border: 12 51% 34%; /* #823829 */
+    --input: 0 0% 100%; /* #FFFFFF - we'll use opacity utilities for transparency */
+    --ring: 12 51% 34%; /* #823829 */
+
+    --radius: 0px; /* No border radius */
+
+    --sidebar-background: 240 5.9% 10%; /* very dark blue */
+    --sidebar-foreground: 240 4.8% 95.9%; /* almost white */
+
     --sidebar-primary: 224.3 76.3% 48%;
     --sidebar-primary-foreground: 0 0% 100%;
+
     --sidebar-accent: 240 3.7% 15.9%;
     --sidebar-accent-foreground: 240 4.8% 95.9%;
+
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
