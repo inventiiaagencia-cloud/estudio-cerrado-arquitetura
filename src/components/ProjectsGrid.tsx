@@ -132,7 +132,7 @@ const ProjectsGrid = () => {
                 className="w-full h-full object-cover transition-transform duration-1000 transition-filter duration-500 group-hover:scale-105"
                 style={{ 
                   filter: isNight 
-                    ? 'brightness(0.75) saturate(0.7) hue-rotate(-5deg) contrast(1.05)' 
+                    ? 'brightness(0.9) saturate(0.88) hue-rotate(-2deg) contrast(1.02)' 
                     : 'none' 
                 }}
               />
