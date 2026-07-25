@@ -7,6 +7,7 @@ const projects = [
     city: "São Paulo, SP",
     year: 2022,
     coordinates: "23°33'S 46°38'W",
+    praise: "Equilíbrio entre brutalismo e transparência",
     images: {
       day: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
       night: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80&sat=-100&bri=-20",
@@ -20,6 +21,7 @@ const projects = [
     city: "Chapada dos Veadeiros, GO",
     year: 2021,
     coordinates: "14°05'S 46°38'W",
+    praise: "Integração total com o Planalto Central",
     images: {
       day: "https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
       night: "https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80&sat=-100&bri=-20",
@@ -33,6 +35,7 @@ const projects = [
     city: "Rio de Janeiro, RJ",
     year: 2023,
     coordinates: "22°54'S 43°12'W",
+    praise: "Transparência que celebra a luz carioca",
     images: {
       day: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
       night: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80&sat=-100&bri=-20",
@@ -46,6 +49,7 @@ const projects = [
     city: "Tiradentes, MG",
     year: 2020,
     coordinates: "21°07'S 44°14'W",
+    praise: "Materialidade que dialoga com o barro colonial",
     images: {
       day: "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
       night: "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80&sat=-100&bri=-20",
@@ -59,6 +63,7 @@ const projects = [
     city: "Belo Horizonte, MG",
     year: 2023,
     coordinates: "19°55'S 43°56'W",
+    praise: "Horizontes ampliados pela arquitetura minimalista",
     images: {
       day: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
       night: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80&sat=-100&bri=-20",
@@ -72,6 +77,7 @@ const projects = [
     city: "Petrópolis, RJ",
     year: 2024,
     coordinates: "22°30'S 43°10'W",
+    praise: "Refúgio serrano que respeita a Mata Atlântica",
     images: {
       day: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
       night: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80&sat=-100&bri=-20",
@@ -132,6 +138,9 @@ const ProjectsGrid = () => {
                     {project.coordinates}
                   </span>
                   <h3 className="text-3xl font-serif text-white">{project.name}</h3>
+                  <p className="text-xs font-light text-white/70 tracking-wider">
+                    {project.praise}
+                  </p>
                   <div className="flex items-center gap-4 text-xs font-mono text-white/60 tracking-wider">
                     <span>{project.city}</span>
                     <span className="w-1 h-1 bg-primary rounded-full"></span>
