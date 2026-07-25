@@ -137,26 +137,8 @@ const ProjectsGrid = () => {
                 }}
               />
               
-              {/* Overlay minimalista - hidden on mobile to avoid duplicate captions */}
-              <div className="hidden md:block absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6 md:p-8">
-                <div className="flex flex-col gap-1.5">
-                  <span className="font-mono text-[9px] tracking-[0.3em] text-primary uppercase">
-                    {project.coordinates}
-                  </span>
-                  <h3 className="text-2xl font-serif text-white">{project.name}</h3>
-                  <p className="text-xs font-light text-white/70 tracking-wider">
-                    {project.praise}
-                  </p>
-                  <div className="flex items-center gap-3 text-xs font-mono text-white/60 tracking-wider">
-                    <span>{project.city}</span>
-                    <span className="w-1 h-1 bg-primary rounded-full"></span>
-                    <span>{project.year}</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Legenda visível mobile / sempre */}
-              <div className="absolute bottom-4 left-4 md:hidden">
+              {/* Descrição na parte inferior esquerda - visível em todas as telas */}
+              <div className="absolute bottom-4 left-4">
                  <span className="font-mono text-[7px] tracking-[0.2em] text-white/50 block mb-1">
                     {project.coordinates}
                   </span>
