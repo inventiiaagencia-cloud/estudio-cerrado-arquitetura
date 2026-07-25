@@ -10,7 +10,8 @@ const projects = [
     praise: "Integração sublime com a paisagem do cerrado",
     images: {
       day: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-      night: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80&sat=-100&bri=-20",
+      // Night URL no longer used - applying filter via CSS instead
+      night: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
     },
     span: "col-span-12",
     height: "h-[70vh]",
@@ -24,7 +25,7 @@ const projects = [
     praise: "Refúgio imerso no cerrado central do Brasil",
     images: {
       day: "https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-      night: "https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80&sat=-100&bri=-20",
+      night: "https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
     },
     span: "col-span-12 md:col-span-6",
     height: "h-[60vh]",
@@ -38,7 +39,7 @@ const projects = [
     praise: "Transparência que dialoga com a luz única da cidade maravilhosa",
     images: {
       day: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-      night: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80&sat=-100&bri=-20",
+      night: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
     },
     span: "col-span-12 md:col-span-6",
     height: "h-[60vh]",
@@ -52,7 +53,7 @@ const projects = [
     praise: "Resgate da sabedoria construtiva do barro colonial",
     images: {
       day: "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-      night: "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80&sat=-100&bri=-20",
+      night: "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
     },
     span: "col-span-12 md:col-span-4",
     height: "h-[50vh]",
@@ -66,7 +67,7 @@ const projects = [
     praise: "Horizontes ampliados que celebram a topografia única de Belo Horizonte",
     images: {
       day: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-      night: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80&sat=-100&bri=-20",
+      night: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
     },
     span: "col-span-12 md:col-span-4",
     height: "h-[50vh]",
@@ -80,7 +81,7 @@ const projects = [
     praise: "Presença serrana que respeita a majestade da Mata Atlântica",
     images: {
       day: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-      night: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80&sat=-100&bri=-20",
+      night: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
     },
     span: "col-span-12 md:col-span-4",
     height: "h-[50vh]",
@@ -126,9 +127,14 @@ const ProjectsGrid = () => {
               className={`relative group overflow-hidden bg-stone-900 ${project.span} ${project.height}`}
             >
               <img
-                src={isNight ? project.images.night : project.images.day}
+                src={project.images.day}
                 alt={project.name}
-                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                className="w-full h-full object-cover transition-transform duration-1000 transition-filter duration-500 group-hover:scale-105"
+                style={{ 
+                  filter: isNight 
+                    ? 'brightness(0.75) saturate(0.7) hue-rotate(-5deg) contrast(1.05)' 
+                    : 'none' 
+                }}
               />
               
               {/* Overlay minimalista */}
