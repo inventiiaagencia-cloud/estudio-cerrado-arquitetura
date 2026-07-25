@@ -97,6 +97,9 @@ const ProjectsGrid = () => {
           <div>
             <h2 className="text-4xl md:text-6xl font-serif text-white mb-4">Obras</h2>
             <p className="text-muted-foreground font-mono text-sm tracking-widest uppercase">Portfólio Selecionado</p>
+            <p className="text-muted-foreground font-serif text-sm italic max-w-md mx-auto mt-2">
+              "A arquitetura é o aprendizado do espaço, do tempo e da ordem."
+            </p>
           </div>
           
           <div className="flex items-center gap-1 border border-white/10 p-1">
