@@ -32,7 +32,7 @@ const Differentials = () => {
     <section id="metodo" className="relative py-20 md:py-36 bg-background">
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mb-20">
-          <h2 className="text-4xl md:text-5xl font-serif text-white mb-6 leading-tight">
+          <h2 className="text-4xl md:text-5xl font-serif text-white mb-4 md:mb-0 leading-tight">
             Nossa abordagem técnica e sensorial.
           </h2>
           <div className="w-20 h-[1px] bg-primary"></div>
@@ -40,21 +40,16 @@ const Differentials = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
           {differentials.map((item, index) => (
-            <div 
-              key={index} 
-              className="group flex flex-col items-start space-y-6 p-0 md:p-3 border-l border-white/5 hover:border-primary/40 transition-colors"
+            <div
+              key={index}
+              className="flex flex-col items-start gap-4"
             >
-              <div className="p-0">
-                <item.icon className="w-9 h-9 text-primary stroke-[1px] group-hover:scale-105 transition-transform duration-500" />
-              </div>
-              
-              <div className="space-y-3">
-                <h3 className="text-xl font-serif text-white tracking-wide">
-                  {item.title}
-                </h3>
-                <p className="text-muted-foreground leading-relaxed text-sm font-light">
-                  {item.description}
-                </p>
+              <div className="flex items-center gap-3">
+                <item.icon className="h-8 w-8 text-primary" />
+                <div>
+                  <h3 className="text-xl font-semibold text-white">{item.title}</h3>
+                  <p className="text-muted-foreground">{item.description}</p>
+                </div>
               </div>
             </div>
           ))}
