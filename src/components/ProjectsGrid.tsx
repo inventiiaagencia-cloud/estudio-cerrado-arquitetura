@@ -21,8 +21,8 @@ const projects = [
     year: 2021,
     coordinates: "14°05'S 46°38'W",
     images: {
-      day: "https://images.unsplash.com/photo-1600566753190-17f0bb2a6cbe?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-      night: "https://images.unsplash.com/photo-1600566753190-17f0bb2a6cbe?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80&sat=-100&bri=-20",
+      day: "https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+      night: "https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80&sat=-100&bri=-20",
     },
     span: "col-span-12 md:col-span-6",
     height: "h-[60vh]",
@@ -47,8 +47,8 @@ const projects = [
     year: 2020,
     coordinates: "21°07'S 44°14'W",
     images: {
-      day: "https://images.unsplash.com/photo-1600607687940-467f4b56b0c2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-      night: "https://images.unsplash.com/photo-1600607687940-467f4b56b0c2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80&sat=-100&bri=-20",
+      day: "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+      night: "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80&sat=-100&bri=-20",
     },
     span: "col-span-12 md:col-span-4",
     height: "h-[50vh]",
