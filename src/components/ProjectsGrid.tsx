@@ -10,7 +10,6 @@ const projects = [
     praise: "Integração sublime com a paisagem do cerrado",
     images: {
       day: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-      // Night URL no longer used - applying filter via CSS instead
       night: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
     },
     span: "col-span-12",
@@ -137,12 +136,15 @@ const ProjectsGrid = () => {
                 }}
               />
               
-              {/* Descrição na parte inferior esquerda - visível em todas as telas */}
+              {/* Descrição completa na parte inferior esquerda - visível em todas as telas */}
               <div className="absolute bottom-4 left-4">
-                 <span className="font-mono text-[7px] tracking-[0.2em] text-white/50 block mb-1">
-                    {project.coordinates}
-                  </span>
-                  <h3 className="text-lg font-serif text-white">{project.name}</h3>
+                <span className="font-mono text-[7px] tracking-[0.2em] text-white/50 block mb-1">
+                  {project.coordinates}
+                </span>
+                <h3 className="text-lg font-serif text-white">{project.name}</h3>
+                <p className="text-xs font-mono text-white/60 mb-1">{project.city}</p>
+                <p className="text-xs font-mono text-white/60 mb-1">{project.year}</p>
+                <p className="text-xs font-light text-white/70">{project.praise}</p>
               </div>
             </div>
           ))}
