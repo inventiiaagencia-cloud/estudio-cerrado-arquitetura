@@ -13,7 +13,8 @@ const projects = [
       night: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
     },
     span: "col-span-12",
-    height: "h-[70vh]",
+    height: "h-[50vh] md:h-[70vh]",
+    imagePosition: "object-center",
   },
   {
     id: 2,
@@ -27,7 +28,8 @@ const projects = [
       night: "https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
     },
     span: "col-span-12 md:col-span-6",
-    height: "h-[60vh]",
+    height: "h-[36vh] md:h-[60vh]",
+    imagePosition: "object-[center_35%] md:object-center",
   },
   {
     id: 3,
@@ -41,7 +43,8 @@ const projects = [
       night: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
     },
     span: "col-span-12 md:col-span-6",
-    height: "h-[60vh]",
+    height: "h-[45vh] md:h-[60vh]",
+    imagePosition: "object-center",
   },
   {
     id: 4,
@@ -55,7 +58,8 @@ const projects = [
       night: "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
     },
     span: "col-span-12 md:col-span-4",
-    height: "h-[50vh]",
+    height: "h-[40vh] md:h-[50vh]",
+    imagePosition: "object-center",
   },
   {
     id: 5,
@@ -69,7 +73,8 @@ const projects = [
       night: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
     },
     span: "col-span-12 md:col-span-4",
-    height: "h-[50vh]",
+    height: "h-[40vh] md:h-[50vh]",
+    imagePosition: "object-center",
   },
   {
     id: 6,
@@ -83,7 +88,8 @@ const projects = [
       night: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
     },
     span: "col-span-12 md:col-span-4",
-    height: "h-[50vh]",
+    height: "h-[40vh] md:h-[50vh]",
+    imagePosition: "object-center",
   },
 ];
 
@@ -135,7 +141,7 @@ const ProjectsGrid = () => {
               <img
                 src={project.images.day}
                 alt={project.name}
-                className="w-full h-full object-cover transition-transform duration-1000 transition-filter duration-500 group-hover:scale-105"
+                className={`w-full h-full object-cover ${project.imagePosition || 'object-center'} transition-transform duration-1000 transition-filter duration-500 group-hover:scale-105`}
                 style={{ 
                   filter: isNight 
                     ? 'brightness(0.55) saturate(0.8) hue-rotate(-6deg) contrast(1.1)' 
