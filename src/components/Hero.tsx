@@ -2,7 +2,7 @@ import { Phone } from "lucide-react";
 import { useState } from "react";
 
 const Hero = () => {
-  const [isNight, setIsNight] = useState(false);
+  const [isNight, setIsNight] = useState(true); // Changed default to true for Crepúsculo
 
   return (
     <div className="relative w-full">
@@ -33,16 +33,7 @@ const Hero = () => {
             Projetos que pertencem ao lugar onde nascem.
           </h1>
           <div className="flex items-center gap-1 border border-white/10 px-2 py-0.5">
-            <button
-              onClick={() => setIsNight(false)}
-              className={`px-5 py-1.5 text-[9px] font-mono uppercase tracking-[0.2em] transition-all ${
-                !isNight
-                  ? "bg-primary text-white"
-                  : "bg-black/50 text-muted-foreground hover:text-white hover:bg-black/60"
-              }`}
-            >
-              Luz do Dia
-            </button>
+            {/* Crepúsculo button on left (default active) */}
             <button
               onClick={() => setIsNight(true)}
               className={`px-5 py-1.5 text-[9px] font-mono uppercase tracking-[0.2em] transition-all ${
@@ -52,6 +43,17 @@ const Hero = () => {
               }`}
             >
               Crepúsculo
+            </button>
+            {/* Luz do Dia button on right */}
+            <button
+              onClick={() => setIsNight(false)}
+              className={`px-5 py-1.5 text-[9px] font-mono uppercase tracking-[0.2em] transition-all ${
+                !isNight
+                  ? "bg-primary text-white"
+                  : "bg-black/50 text-muted-foreground hover:text-white hover:bg-black/60"
+              }`}
+            >
+              Luz do Dia
             </button>
           </div>
         </div>
