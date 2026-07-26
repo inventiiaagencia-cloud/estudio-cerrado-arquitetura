@@ -7,17 +7,50 @@ const QUICK_PROMPTS = [
 
 const CTAFixed = () => {
   const [isChatOpen, setIsChatOpen] = useState(false);
+  
+  // Load initial messages from sessionStorage if available
   const [messages, setMessages] = useState<Array<{
     id: string;
     text: string;
     sender: 'user' | 'bot';
     loading?: boolean;
     timestamp?: string;
-  }>>([]);
+  }>>(() => {
+    try {
+      const saved = sessionStorage.getItem('estudio_cerrado_chat_messages');
+      return saved ? JSON.parse(saved) : [];
+    } catch {
+      return [];
+    }
+  });
+
+  // Load or initialize chatId for the active session
+  const [chatId, setChatId] = useState<string>(() => {
+    try {
+      const savedId = sessionStorage.getItem('estudio_cerrado_chat_id');
+      if (savedId) return savedId;
+      const newId = crypto.randomUUID();
+      sessionStorage.setItem('estudio_cerrado_chat_id', newId);
+      return newId;
+    } catch {
+      return crypto.randomUUID();
+    }
+  });
+
   const [input, setInput] = useState('');
-  const [chatId, setChatId] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  // Save messages to sessionStorage whenever they change
+  useEffect(() => {
+    try {
+      // Filter out temporary loading messages before saving
+      const cleanMessages = messages.filter(m => !m.loading);
+      sessionStorage.setItem('estudio_cerrado_chat_messages', JSON.stringify(cleanMessages));
+    } catch (e) {
+      console.error("Error saving chat state to sessionStorage", e);
+    }
+  }, [messages]);
 
   // Listen to open-chat custom event dispatched from Hero or other components
   useEffect(() => {
@@ -26,18 +59,12 @@ const CTAFixed = () => {
     return () => window.removeEventListener("open-chat", handleOpenChat);
   }, []);
 
-  // Scroll to bottom when messages change
+  // Scroll to bottom when messages change or chat is opened
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
-
-  // Generate chatId when chat opens
-  useEffect(() => {
-    if (isChatOpen && !chatId) {
-      const newChatId = crypto.randomUUID();
-      setChatId(newChatId);
+    if (isChatOpen) {
+      messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
     }
-  }, [isChatOpen, chatId]);
+  }, [messages, isChatOpen]);
 
   const getCurrentTime = () => {
     return new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
