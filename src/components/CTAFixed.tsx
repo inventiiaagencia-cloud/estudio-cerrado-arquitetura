@@ -5,6 +5,18 @@ const QUICK_PROMPTS = [
   "Gostaria de agendar uma consultoria"
 ];
 
+// Fallback UUID generator for non-secure HTTP contexts
+const generateUUID = () => {
+  if (typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function') {
+    return crypto.randomUUID();
+  }
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    const r = Math.random() * 16 | 0;
+    const v = c === 'x' ? r : (r & 0x3 | 0x8);
+    return v.toString(16);
+  });
+};
+
 const CTAFixed = () => {
   const [isChatOpen, setIsChatOpen] = useState(false);
   
@@ -29,11 +41,11 @@ const CTAFixed = () => {
     try {
       const savedId = sessionStorage.getItem('estudio_cerrado_chat_id');
       if (savedId) return savedId;
-      const newId = crypto.randomUUID();
+      const newId = generateUUID();
       sessionStorage.setItem('estudio_cerrado_chat_id', newId);
       return newId;
     } catch {
-      return crypto.randomUUID();
+      return generateUUID();
     }
   });
 
