@@ -3,45 +3,45 @@ import { useState } from "react";
 const projects = [
   {
     id: 1,
-    name: "Refúgio da Mata",
+    name: "Casa Pivô",
     city: "São Paulo, SP",
     year: 2022,
     coordinates: "23°33'S 46°38'W",
-    praise: "Integração total com a reserva da Mata Atlântica",
+    praise: "Integração sublime com a paisagem do cerrado",
     images: {
-      day: "https://images.unsplash.com/photo-1600585154340-6c2cb5d967d2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-      night: "https://images.unsplash.com/photo-1600585154340-6c2cb5d967d2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+      day: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+      night: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+    },
+    span: "col-span-12",
+    height: "h-[70vh]",
+  },
+  {
+    id: 2,
+    name: "Refúgio Cerrado",
+    city: "Chapada dos Veadeiros, GO",
+    year: 2021,
+    coordinates: "14°05'S 46°38'W",
+    praise: "Refúgio imerso no cerrado central do Brasil",
+    images: {
+      day: "https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+      night: "https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
     },
     span: "col-span-12 md:col-span-6",
     height: "h-[60vh]",
   },
   {
-    id: 2,
-    name: "Casa do Sol",
-    city: "Florianópolis, SC",
-    year: 2021,
-    coordinates: "27°36'S 48°34'W",
-    praise: "Architettura che cattura o primeiro raio da manhã",
-    images: {
-      day: "https://images.unsplash.com/photo-1600585154225-4596d5be834b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-      night: "https://images.unsplash.com/photo-1600585154225-4596d5be834b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-    },
-    span: "col-span-12 md:col-span-4",
-    height: "h-[50vh]",
-  },
-  {
     id: 3,
-    name: "Pouso dos Ventos",
-    city: "Fernando de Noronha, PE",
-    year: 2020,
-    coordinates: "3°48'S 32°28'W",
-    praise: "Arquitetura que respira com os alísios do oceano",
+    name: "Pavilhão Vidro",
+    city: "Rio de Janeiro, RJ",
+    year: 2023,
+    coordinates: "22°54'S 43°12'W",
+    praise: "Transparência que dialoga com a luz única da cidade maravilhosa",
     images: {
-      day: "https://images.unsplash.com/photo-1600585153960-2a5bbe5072e6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-      night: "https://images.unsplash.com/photo-1600585153960-2a5bbe5072e6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+      day: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+      night: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
     },
-    span: "col-span-12 md:col-span-2",
-    height: "h-[40vh]",
+    span: "col-span-12 md:col-span-6",
+    height: "h-[60vh]",
   },
   {
     id: 4,
@@ -88,32 +88,21 @@ const projects = [
 ];
 
 const ProjectsGrid = () => {
-  const [isNight, setIsNight] = useState(false); // Luz do Dia ativo por padrão
+  const [isNight, setIsNight] = useState(false);
 
   return (
-    <section
-      id="obras"
-      className="relative py-20 md:pt-32 md:pb-16 bg-background border-t border-white/5"
-    >
+    <section id="obras" className="relative py-20 md:pt-32 md:pb-16 bg-background border-t border-white/5">
       <div className="w-full px-0">
         <div className="container mx-auto px-6 mb-12 md:mb-20 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
-            <h2 className="text-4xl md:text-6xl font-serif text-white mb-4">
-              Obras
-            </h2>
-            <p className="text-muted-foreground font-mono text-sm tracking-widest uppercase">
-              Portfólio Selecionado
-            </p>
+            <h2 className="text-4xl md:text-6xl font-serif text-white mb-4">Obras</h2>
+            <p className="text-muted-foreground font-mono text-sm tracking-widest uppercase">Portfólio Selecionado</p>
             <p className="text-muted-foreground font-serif text-sm italic max-w-md mx-auto mt-2">
               "A arquitetura é o aprendizado do espaço, do tempo e da ordem."
             </p>
           </div>
-
-          <p className="w-full text-center font-mono text-[8px] tracking-[0.3em] text-primary uppercase mb-2">
-            Clique aqui e mude sua experiência
-          </p>
-
-          <div className="flex items-center gap-1 border border-white/10 px-2 py-0.5">
+          
+          <div className="flex items-center gap-1 border border-white/10 p-1">
             <button
               onClick={() => setIsNight(false)}
               className={`px-5 py-1.5 text-[9px] font-mono uppercase tracking-[0.2em] transition-all ${
@@ -147,13 +136,13 @@ const ProjectsGrid = () => {
                 src={project.images.day}
                 alt={project.name}
                 className="w-full h-full object-cover transition-transform duration-1000 transition-filter duration-500 group-hover:scale-105"
-                style={{
-                  filter: isNight
-                    ? 'brightness(0.55) saturate(0.8) hue-rotate(-6deg) contrast(1.1)'
-                    : "none",
+                style={{ 
+                  filter: isNight 
+                    ? 'brightness(0.55) saturate(0.8) hue-rotate(-6deg) contrast(1.1)' 
+                    : 'none' 
                 }}
               />
-
+              
               {/* Descrição completa na parte inferior esquerda - visível em todas as telas */}
               <div className="absolute bottom-4 left-4">
                 <div className="bg-black/30 backdrop-blur-sm rounded-md px-2 py-1 max-w-[200px]">
@@ -161,15 +150,9 @@ const ProjectsGrid = () => {
                     {project.coordinates}
                   </span>
                   <h3 className="text-lg font-serif text-white">{project.name}</h3>
-                  <p className="text-xs font-mono text-white/60 mb-1">
-                    {project.city}
-                  </p>
-                  <p className="text-xs font-mono text-white/60 mb-1">
-                    {project.year}
-                  </p>
-                  <p className="text-xs font-light text-white/70">
-                    {project.praise}
-                  </p>
+                  <p className="text-xs font-mono text-white/60 mb-1">{project.city}</p>
+                  <p className="text-xs font-mono text-white/60 mb-1">{project.year}</p>
+                  <p className="text-xs font-light text-white/70">{project.praise}</p>
                 </div>
               </div>
             </div>

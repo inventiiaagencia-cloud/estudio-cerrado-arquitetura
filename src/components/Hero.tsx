@@ -2,7 +2,7 @@ import { Phone } from "lucide-react";
 import { useState } from "react";
 
 const Hero = () => {
-  const [isNight, setIsNight] = useState(true); // Crepúsculo ativo por padrão
+  const [isNight, setIsNight] = useState(true); // Changed default to true for Crepúsculo
 
   return (
     <div className="relative w-full">
@@ -32,20 +32,8 @@ const Hero = () => {
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif text-white mb-8 leading-[1.1] tracking-tight">
             Projetos que pertencem ao lugar onde nascem.
           </h1>
-          <p className="font-mono text-[8px] tracking-[0.3em] text-primary uppercase mb-2">
-            Clique aqui e mude sua experiência
-          </p>
           <div className="flex items-center gap-1 border border-white/10 px-2 py-0.5">
-            <button
-              onClick={() => setIsNight(false)}
-              className={`px-5 py-1.5 text-[9px] font-mono uppercase tracking-[0.2em] transition-all ${
-                !isNight
-                  ? "bg-primary text-white"
-                  : "bg-black/50 text-muted-foreground hover:text-white hover:bg-black/60"
-              }`}
-            >
-              Luz do Dia
-            </button>
+            {/* Crepúsculo button on left (default active) */}
             <button
               onClick={() => setIsNight(true)}
               className={`px-5 py-1.5 text-[9px] font-mono uppercase tracking-[0.2em] transition-all ${
@@ -55,6 +43,17 @@ const Hero = () => {
               }`}
             >
               Crepúsculo
+            </button>
+            {/* Luz do Dia button on right */}
+            <button
+              onClick={() => setIsNight(false)}
+              className={`px-5 py-1.5 text-[9px] font-mono uppercase tracking-[0.2em] transition-all ${
+                !isNight
+                  ? "bg-primary text-white"
+                  : "bg-black/50 text-muted-foreground hover:text-white hover:bg-black/60"
+              }`}
+            >
+              Luz do Dia
             </button>
           </div>
         </div>
