@@ -157,19 +157,24 @@ const CTAFixed = () => {
 
   return (
     <div className="fixed bottom-6 right-6 z-50">
-      {/* Floating Chat Icon Button */}
+      {/* Floating Chat Icon Button with 24h Label */}
       {!isChatOpen && (
-        <button
-          onClick={() => setIsChatOpen(true)}
-          aria-label="Abrir chat de consultoria"
-          className="group relative flex items-center justify-center w-14 h-14 bg-[#18181B] text-white rounded-full shadow-2xl hover:bg-primary border border-white/10 hover:border-primary/50 transition-all duration-300 hover:scale-105 active:scale-95"
-        >
-          <span className="absolute -top-1 -right-1 flex h-3.5 w-3.5">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-primary"></span>
+        <div className="flex flex-col items-center gap-1.5 animate-fadeIn">
+          <span className="bg-[#18181B]/95 backdrop-blur-md text-white/90 text-[10px] font-mono tracking-wider uppercase px-3 py-1 rounded-full border border-white/10 shadow-xl whitespace-nowrap">
+            Atendimento 24h/por dia
           </span>
-          <MessageSquare className="h-6 w-6 text-white group-hover:rotate-6 transition-transform duration-300" />
-        </button>
+          <button
+            onClick={() => setIsChatOpen(true)}
+            aria-label="Abrir chat de consultoria"
+            className="group relative flex items-center justify-center w-14 h-14 bg-[#18181B] text-white rounded-full shadow-2xl hover:bg-primary border border-white/10 hover:border-primary/50 transition-all duration-300 hover:scale-105 active:scale-95"
+          >
+            <span className="absolute -top-1 -right-1 flex h-3.5 w-3.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-primary"></span>
+            </span>
+            <MessageSquare className="h-6 w-6 text-white group-hover:rotate-6 transition-transform duration-300" />
+          </button>
+        </div>
       )}
       
       {/* Chic Chat Drawer / Modal */}
