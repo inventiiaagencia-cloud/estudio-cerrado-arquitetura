@@ -7,7 +7,7 @@ const blueprints = [
     subtitle: "Estudo da implantação e fluxos integrados",
     scale: "Escala 1:100",
     year: "Estudo preliminar, 2023",
-    image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?auto=format&fit=crop&w=800&q=80",
     rotation: "md:-rotate-1",
   },
   {
@@ -16,7 +16,7 @@ const blueprints = [
     subtitle: "Análise de pé-direito duplo e iluminação zenital",
     scale: "Escala 1:50",
     year: "Projeto executivo, 2023",
-    image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=800&q=80",
     rotation: "md:rotate-1",
   },
   {
@@ -25,7 +25,7 @@ const blueprints = [
     subtitle: "Cobogós e brises de madeira para conforto térmico",
     scale: "Escala 1:75",
     year: "Anteprojeto, 2022",
-    image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=800&q=80",
     rotation: "md:-rotate-1",
   },
   {
@@ -34,7 +34,7 @@ const blueprints = [
     subtitle: "Acomodação da estrutura na topografia natural",
     scale: "Escala 1:200",
     year: "Croqui conceitual, 2024",
-    image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80",
     rotation: "md:rotate-1",
   },
 ];
