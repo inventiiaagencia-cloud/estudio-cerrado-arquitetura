@@ -106,7 +106,9 @@ const ProjectsGrid = () => {
             <button
               onClick={() => setIsNight(false)}
               className={`px-5 py-1.5 text-[9px] font-mono uppercase tracking-[0.2em] transition-all ${
-                !isNight ? "bg-primary text-white" : "text-muted-foreground hover:text-white"
+                !isNight
+                  ? "bg-primary text-white"
+                  : "bg-black/50 text-muted-foreground hover:text-white hover:bg-black/60"
               }`}
             >
               Luz do Dia
@@ -114,7 +116,9 @@ const ProjectsGrid = () => {
             <button
               onClick={() => setIsNight(true)}
               className={`px-5 py-1.5 text-[9px] font-mono uppercase tracking-[0.2em] transition-all ${
-                isNight ? "bg-primary text-white" : "text-muted-foreground hover:text-white"
+                isNight
+                  ? "bg-primary text-white"
+                  : "bg-black/50 text-muted-foreground hover:text-white hover:bg-black/60"
               }`}
             >
               Crepúsculo
