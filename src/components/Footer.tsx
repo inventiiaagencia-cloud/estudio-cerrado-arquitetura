@@ -17,7 +17,7 @@ const Footer = () => {
           <div className="md:col-span-3 flex flex-col gap-5">
             <span className="font-mono text-[9px] tracking-[0.3em] text-primary uppercase">Contato</span>
             <div className="flex flex-col gap-2 font-mono text-xs tracking-wider text-white/60">
-              <a href="https://wa.me/5511910183401" className="hover:text-primary transition-colors">WhatsApp: +55 11 91018-3401</a>
+              <a href="https://wa.me/5511932466673" className="hover:text-primary transition-colors">WhatsApp: +55 11 93246-6673</a>
               <a href="mailto:contato@estudiocerrado.com" className="hover:text-primary transition-colors">contato@estudiocerrado.com</a>
             </div>
           </div>
