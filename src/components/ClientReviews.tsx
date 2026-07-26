@@ -1,4 +1,4 @@
-import { Quote } from "lucide-react";
+import { Quote, MessageSquare } from "lucide-react";
 
 const reviews = [
   {
@@ -31,6 +31,10 @@ const reviews = [
 ];
 
 const ClientReviews = () => {
+  const handleOpenChat = () => {
+    window.dispatchEvent(new CustomEvent("open-chat"));
+  };
+
   return (
     <section id="depoimentos" className="relative py-24 bg-[#0A0A0B] border-t border-white/5">
       <div className="container mx-auto px-6">
@@ -46,7 +50,7 @@ const ClientReviews = () => {
         </div>
 
         {/* Grid de Depoimentos (3 Colunas) */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6 mb-20">
           {reviews.map((item) => (
             <div
               key={item.id}
@@ -81,6 +85,20 @@ const ClientReviews = () => {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Chamada e Botão CTA Centralizado */}
+        <div className="flex flex-col items-center text-center pt-8 border-t border-white/5">
+          <span className="font-mono text-[9px] md:text-xs tracking-[0.3em] text-primary uppercase block mb-4">
+            PRONTO PARA COMEÇAR SEU PROJETO?
+          </span>
+          <button
+            onClick={handleOpenChat}
+            className="flex items-center gap-2 px-6 py-3.5 bg-primary text-white rounded-md shadow-lg hover:bg-primary/90 transition-all font-mono text-xs uppercase tracking-wider hover:scale-105"
+          >
+            <MessageSquare className="h-4 w-4" />
+            SOLICITAR PROPOSTA
+          </button>
         </div>
       </div>
     </section>
