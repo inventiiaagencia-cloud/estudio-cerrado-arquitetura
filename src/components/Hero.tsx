@@ -12,7 +12,7 @@ const Hero = () => {
         loop
         muted
         playsInline
-        webkit-playsinline   /* Safari iOS */
+        webkit-playsinline="true"
         preload="auto"
         poster="/videos/videohero-poster.jpg" /* você pode colocar uma imagem miniatura aqui */
         className="absolute inset-0 w-full h-full object-cover"
