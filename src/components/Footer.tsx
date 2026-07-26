@@ -7,7 +7,14 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-6 mb-20">
           {/* Logo / Title */}
           <div className="md:col-span-5">
-            <h2 className="text-2xl md:text-3xl font-serif text-white mb-4">Estúdio Cerrado Arquitetura</h2>
+            <div className="flex items-center gap-3 mb-4">
+              <img
+                src="/favicon.svg"
+                alt="Estúdio Cerrado Logo"
+                className="w-10 h-10 object-contain rounded"
+              />
+              <h2 className="text-2xl md:text-3xl font-serif text-white">Estúdio Cerrado Arquitetura</h2>
+            </div>
             <p className="text-muted-foreground max-w-sm leading-relaxed font-light">
               Escritório focado em arquitetura de alto padrão, onde o luxo se manifesta na pureza dos materiais e no silêncio dos espaços.
             </p>

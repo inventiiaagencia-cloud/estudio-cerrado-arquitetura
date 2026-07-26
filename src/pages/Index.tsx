@@ -1,3 +1,4 @@
+import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import ProjectsGrid from "@/components/ProjectsGrid";
@@ -11,6 +12,7 @@ import Footer from "@/components/Footer";
 const Index = () => {
   return (
     <>
+      <Header />
       <Hero />
       <About />
       <ProjectsGrid />
