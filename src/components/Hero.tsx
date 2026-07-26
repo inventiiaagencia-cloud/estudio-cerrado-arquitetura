@@ -32,7 +32,7 @@ const Hero = () => {
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif text-white mb-8 leading-[1.1] tracking-tight">
             Projetos que pertencem ao lugar onde nascem.
           </h1>
-          <div className="flex items-center gap-1 border border-white/10 p-1">
+          <div className="flex items-center gap-1 border border-white/10 px-2 py-0.5">
             <button
               onClick={() => setIsNight(false)}
               className={`px-5 py-1.5 text-[9px] font-mono uppercase tracking-[0.2em] transition-all ${
