@@ -1,24 +1,24 @@
 import { Phone } from "lucide-react";
 
 const Hero = () => {
-  // Placeholder image - replace with actual project image
-  const heroImageUrl =
-    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bHV4dXJ5JTIwbW9kVW5pdCUyMGhvdXNlfGVufDB8fDB8fHww&auto=format&fit=crop&w=1600&q=80";
-
   return (
     <div className="relative w-full">
-      {/* Background image */}
-      <div
-        className="absolute inset-0 bg-center bg-cover bg-no-repeat"
-        style={{
-          backgroundImage: "url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bHV4dXJ5JTIwbW9kVW5pdCUyMGhvdXNlfGVufDB8fDB8fHww&auto=format&fit=crop&w=1600&q=80')"
-        }}
-        aria-hidden="true"
-      ></div>
-      {/* Dark overlay */}
+      {/* Video de fundo */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+      >
+        <source src="/videos/videohero.mp4" type="video/mp4" />
+        Seu navegador não suporta a tag de vídeo.
+      </video>
+
+      {/* Overlay escuro */}
       <div className="absolute inset-0 bg-black/50"></div>
 
-      {/* Content */}
+      {/* Conteúdo */}
       <div className="relative flex min-h-screen w-full flex-col items-center justify-center text-center px-6 py-20">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif text-white mb-8 leading-[1.1] tracking-tight">
