@@ -54,10 +54,25 @@ const CTAFixed = () => {
       // Get the actual response from the webhook
       const data = await response.json();
       
-      // Assuming the webhook returns a response with a message property
-      // Adjust this based on what your webhook actually returns
-      const botMessageText = data.message || data.response || "Desculpe, não consegui processar sua mensagem.";
-      
+      // Extract text from webhook response - adjust based on your webhook's actual format
+      let botMessageText = '';
+      if (typeof data === 'string') {
+        botMessageText = data;
+      } else if (data && typeof data === 'object') {
+        if (data.message) {
+          botMessageText = data.message;
+        } else if (data.output) {
+          botMessageText = data.output;
+        } else if (data.reply) {
+          botMessageText = data.reply;
+        } else {
+          // Fallback: show JSON stringified
+          botMessageText = JSON.stringify(data);
+        }
+      } else {
+        botMessageText = String(data);
+      }
+
       const botMessage = {
         id: Date.now().toString() + 'b',
         text: botMessageText,
