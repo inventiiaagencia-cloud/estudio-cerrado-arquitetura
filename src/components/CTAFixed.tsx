@@ -40,12 +40,15 @@ const CTAFixed = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "Accept": "application/json"
         },
         body: JSON.stringify({ chatId, message: input }),
       });
 
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        // Try to get error details
+        const errorText = await response.text();
+        throw new Error(`HTTP ${response.status}: ${errorText}`);
       }
 
       // Simulate bot response after delay
@@ -80,7 +83,7 @@ const CTAFixed = () => {
       // Show error toast
       if (typeof window !== 'undefined') {
         import("sonner").then(({ toast }) => {
-          toast.error("Erro ao enviar mensagem. Tente novamente.");
+          toast.error(`Erro ao enviar mensagem: ${error.message}`);
         });
       }
     }
