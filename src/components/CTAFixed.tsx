@@ -3,7 +3,12 @@ import { useState, useRef, useEffect } from "react";
 
 const CTAFixed = () => {
   const [isChatOpen, setIsChatOpen] = useState(false);
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState<Array<{
+    id: string;
+    text: string;
+    sender: 'user' | 'bot';
+    loading?: boolean;
+  }>>([]);
   const [input, setInput] = useState('');
   const [chatId, setChatId] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -25,13 +30,21 @@ const CTAFixed = () => {
   const sendMessage = async () => {
     if (!input.trim() || !chatId) return;
 
-    const userMessage = {
-      id: Date.now().toString(),
-      text: input,
-      sender: 'user'
-    };
+    const userMessageId = Date.now().toString();
+    const botMessageId = userMessageId + '-bot';
 
-    setMessages(prev => [...prev, userMessage]);
+    // Add user message
+    setMessages(prev => [
+      ...prev,
+      { id: userMessageId, text: input, sender: 'user' }
+    ]);
+
+    // Add bot loading message
+    setMessages(prev => [
+      ...prev,
+      { id: botMessageId, text: 'Processando...', sender: 'bot', loading: true }
+    ]);
+
     setInput('');
     setIsLoading(true);
 
@@ -55,7 +68,7 @@ const CTAFixed = () => {
       const data = await response.json();
       
       // Extract text from webhook response - adjust based on your webhook's actual format
-      let botMessageText = '';
+      let botMessageText = 'Desculpe, não consegui processar sua mensagem.';
       if (typeof data === 'string') {
         botMessageText = data;
       } else if (data && typeof data === 'object') {
@@ -73,23 +86,26 @@ const CTAFixed = () => {
         botMessageText = String(data);
       }
 
-      const botMessage = {
-        id: Date.now().toString() + 'b',
-        text: botMessageText,
-        sender: 'bot'
-      };
-
-      setMessages(prev => [...prev, botMessage]);
-      setIsLoading(false);
+      // Update the bot message with the actual response
+      setMessages(prev => 
+        prev.map(msg => 
+          msg.id === botMessageId 
+            ? { ...msg, text: botMessageText, loading: false } 
+            : msg
+        )
+      );
     } catch (error) {
       console.error("Failed to send message:", error);
+      // Update the bot message with error
+      setMessages(prev => 
+        prev.map(msg => 
+          msg.id === botMessageId 
+            ? { ...msg, text: `Erro: ${error.message}`, loading: false } 
+            : msg
+        )
+      );
+    } finally {
       setIsLoading(false);
-      // Show error toast
-      if (typeof window !== 'undefined') {
-        import("sonner").then(({ toast }) => {
-          toast.error(`Erro ao enviar mensagem: ${error.message}`);
-        });
-      }
     }
   };
 
@@ -139,10 +155,19 @@ const CTAFixed = () => {
                     : 'mr-auto bg-black/30 text-white/90 rounded-br-lg rounded-bl-lg rounded-tr-lg'
                 } p-3`}
               >
-                <p className="text-sm">{msg.text}</p>
-                <span className="block text-xs text-white/40 mt-1">
-                  {msg.sender === 'user' ? 'Você' : 'Especialista'}
-                </span>
+                {msg.loading ? (
+                  <div className="flex items-center space-x-2">
+                    <div className="h-3 w-3 border-2 border-primary border-t-transparent border-r-transparent border-b-primary animate-spin rounded-full"></div>
+                    <span className="text-sm text-white/80">{msg.text}</span>
+                  </div>
+                ) : (
+                  <>
+                    <p className="text-sm">{msg.text}</p>
+                    <span className="block text-xs text-white/40 mt-1">
+                      {msg.sender === 'user' ? 'Você' : 'Especialista'}
+                    </span>
+                  </>
+                )}
               </div>
             ))}
             <div ref={messagesEndRef} />
