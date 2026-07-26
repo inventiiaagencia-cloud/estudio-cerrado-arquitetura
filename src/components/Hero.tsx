@@ -3,12 +3,15 @@ import { Phone } from "lucide-react";
 const Hero = () => {
   return (
     <div className="relative w-full">
-      {/* Video de fundo */}
+      {/* Video de fundo – pré-carregado e com placeholder para carregamento rápido */}
       <video
         autoPlay
         loop
         muted
         playsInline
+        webkit-playsinline   /* Safari iOS */
+        preload="auto"
+        poster="/videos/videohero-poster.jpg" /* você pode colocar uma imagem miniatura aqui */
         className="absolute inset-0 w-full h-full object-cover"
       >
         <source src="/videos/videohero.mp4" type="video/mp4" />
