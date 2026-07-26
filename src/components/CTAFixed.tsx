@@ -1,4 +1,4 @@
-import { Phone } from "lucide-react";
+import { MessageSquare } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 
 const CTAFixed = () => {
@@ -13,6 +13,13 @@ const CTAFixed = () => {
   const [chatId, setChatId] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef(null);
+
+  // Listen to open-chat custom event dispatched from Hero or other components
+  useEffect(() => {
+    const handleOpenChat = () => setIsChatOpen(true);
+    window.addEventListener("open-chat", handleOpenChat);
+    return () => window.removeEventListener("open-chat", handleOpenChat);
+  }, []);
 
   // Scroll to bottom when messages change
   useEffect(() => {
@@ -59,15 +66,12 @@ const CTAFixed = () => {
       });
 
       if (!response.ok) {
-        // Try to get error details
         const errorText = await response.text();
         throw new Error(`HTTP ${response.status}: ${errorText}`);
       }
 
-      // Get the actual response from the webhook
       const data = await response.json();
       
-      // Extract text from webhook response - adjust based on your webhook's actual format
       let botMessageText = 'Desculpe, não consegui processar sua mensagem.';
       if (typeof data === 'string') {
         botMessageText = data;
@@ -79,14 +83,12 @@ const CTAFixed = () => {
         } else if (data.reply) {
           botMessageText = data.reply;
         } else {
-          // Fallback: show JSON stringified
           botMessageText = JSON.stringify(data);
         }
       } else {
         botMessageText = String(data);
       }
 
-      // Update the bot message with the actual response
       setMessages(prev => 
         prev.map(msg => 
           msg.id === botMessageId 
@@ -96,7 +98,6 @@ const CTAFixed = () => {
       );
     } catch (error) {
       console.error("Failed to send message:", error);
-      // Update the bot message with error
       setMessages(prev => 
         prev.map(msg => 
           msg.id === botMessageId 
@@ -118,17 +119,20 @@ const CTAFixed = () => {
 
   return (
     <div className="fixed bottom-6 right-6 z-50">
+      {/* Floating Chat Icon Button */}
       <button
         onClick={() => setIsChatOpen(true)}
-        className="flex items-center gap-2 px-4 py-3 bg-primary text-white rounded-md shadow-lg hover:bg-primary/90 transition-colors font-mono text-xs uppercase tracking-wider"
+        aria-label="Abrir chat de consultoria"
+        className="flex items-center justify-center p-4 bg-primary text-white rounded-full shadow-2xl hover:bg-primary/90 hover:scale-110 active:scale-95 transition-all duration-200 border border-white/20"
       >
-        <Phone className="h-4 w-4" />
-        Agende uma consultoria
+        <MessageSquare className="h-6 w-6" />
       </button>
       
       {/* Chat Modal */}
-      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm hidden" 
-           style={{ display: isChatOpen ? 'flex' : 'none' }}>
+      <div 
+        className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm hidden" 
+        style={{ display: isChatOpen ? 'flex' : 'none' }}
+      >
         <div className="relative w-96 max-w-xs bg-background border border-white/10 rounded-lg p-6 shadow-xl">
           <div className="flex justify-between items-start mb-4">
             <h3 className="font-semibold text-white">Chat com nosso especialista</h3>

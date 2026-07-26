@@ -1,12 +1,16 @@
-import { Phone } from "lucide-react";
+import { MessageSquare } from "lucide-react";
 import { useState } from "react";
 
 const Hero = () => {
-  const [isNight, setIsNight] = useState(true); // Changed default to true for Crepúsculo
+  const [isNight, setIsNight] = useState(true); // Default to true for Crepúsculo
+
+  const handleOpenChat = () => {
+    window.dispatchEvent(new CustomEvent("open-chat"));
+  };
 
   return (
     <div className="relative w-full">
-      {/* Video de fundo – pré-carregado e com placeholder para carregamento rápido */}
+      {/* Video de fundo */}
       <video
         autoPlay
         loop
@@ -14,7 +18,7 @@ const Hero = () => {
         playsInline
         webkit-playsinline="true"
         preload="auto"
-        poster="/videos/videohero-poster.jpg" /* você pode colocar uma imagem miniatura aqui */
+        poster="/videos/videohero-poster.jpg"
         className="absolute inset-0 w-full h-full object-cover"
         style={{
           filter: isNight
@@ -28,12 +32,13 @@ const Hero = () => {
 
       {/* Conteúdo */}
       <div className="relative flex min-h-screen w-full flex-col items-center justify-center text-center px-6 py-20">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-4xl mx-auto flex flex-col items-center">
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif text-white mb-8 leading-[1.1] tracking-tight">
             Projetos que pertencem ao lugar onde nascem.
           </h1>
           <p className="text-white/60 text-sm mb-4">Clique e mude sua experiencia</p>
-          <div className="flex items-center justify-center gap-1 border border-white/10 px-1 py-0.5">
+          
+          <div className="flex items-center justify-center gap-1 border border-white/10 px-1 py-0.5 mb-8">
             {/* Crepúsculo button on left (default active) */}
             <button
               onClick={() => setIsNight(true)}
@@ -57,6 +62,15 @@ const Hero = () => {
               Luz do Dia
             </button>
           </div>
+
+          {/* Botão de Agende uma consultoria */}
+          <button
+            onClick={handleOpenChat}
+            className="flex items-center gap-2 px-6 py-3.5 bg-primary text-white rounded-md shadow-lg hover:bg-primary/90 transition-all font-mono text-xs uppercase tracking-wider hover:scale-105"
+          >
+            <MessageSquare className="h-4 w-4" />
+            Agende uma consultoria
+          </button>
         </div>
       </div>
     </div>
