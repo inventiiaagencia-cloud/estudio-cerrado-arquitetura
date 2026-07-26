@@ -1,8 +1,97 @@
 import { Phone } from "lucide-react";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 const CTAFixed = () => {
   const [isChatOpen, setIsChatOpen] = useState(false);
+  const [messages, setMessages] = useState([]);
+  const [input, setInput] = useState('');
+  const [chatId, setChatId] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const messagesEndRef = useRef(null);
+
+  // Scroll to bottom when messages change
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
+
+  // Generate chatId when chat opens
+  useEffect(() => {
+    if (isChatOpen && !chatId) {
+      const newChatId = crypto.randomUUID();
+      setChatId(newChatId);
+    }
+  }, [isChatOpen, chatId]);
+
+  const sendMessage = async () => {
+    if (!input.trim() || !chatId) return;
+
+    const userMessage = {
+      id: Date.now().toString(),
+      text: input,
+      sender: 'user'
+    };
+
+    setMessages(prev => [...prev, userMessage]);
+    setInput('');
+    setIsLoading(true);
+
+    try {
+      const response = await fetch("https://webhook-vpslocal.inventiia.com.br/webhook/arquitetos", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ chatId, message: input }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      // Simulate bot response after delay
+      setTimeout(() => {
+        const botResponses = [
+          "Olá! Sou o assistente do Estúdio Cerrado. Como posso ajudá-lo hoje?",
+          "Nossos projetos são sempre únicos e feitos sob medida para cada terreno.",
+          "Trabalhamos com materialidade honesta e conforto bioclimático em todos nossos projetos.",
+          "Para agendar uma consultoria, preciso saber um pouco mais sobre seu projeto e localização.",
+          "Você já tem um terreno em mente ou está procurando por um?",
+          "Nossa equipe acompanha toda a obra para garantir a excelência executiva.",
+          "Projetamos espaços que dialogam com a paisagem e a luz natural do local.",
+          "Cada projeto começa com uma visita ao terreno para entender suas particularidades.",
+          "Utilizamos concreto, pedra, madeira e barro em sua essência pura.",
+          "Estamos prontos para criar um espaço que pertença ao lugar onde nasce."
+        ];
+        
+        const randomResponse = botResponses[Math.floor(Math.random() * botResponses.length)];
+        
+        const botMessage = {
+          id: Date.now().toString() + 'b',
+          text: randomResponse,
+          sender: 'bot'
+        };
+
+        setMessages(prev => [...prev, botMessage]);
+        setIsLoading(false);
+      }, 1500);
+    } catch (error) {
+      console.error("Failed to send message:", error);
+      setIsLoading(false);
+      // Show error toast
+      if (typeof window !== 'undefined') {
+        import("sonner").then(({ toast }) => {
+          toast.error("Erro ao enviar mensagem. Tente novamente.");
+        });
+      }
+    }
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage();
+    }
+  };
 
   return (
     <div className="fixed bottom-6 right-6 z-50">
@@ -21,78 +110,71 @@ const CTAFixed = () => {
           <div className="flex justify-between items-start mb-4">
             <h3 className="font-semibold text-white">Chat com nosso especialista</h3>
             <button
-              onClick={() => setIsChatOpen(false)}
+              onClick={() => {
+                setIsChatOpen(false);
+                setMessages([]);
+                setChatId('');
+                setInput('');
+              }}
               className="text-white/60 hover:text-white"
             >
               ✕
             </button>
           </div>
           
-          <div className="mb-4 text-white/80 text-sm">
-            Fale diretamente com nosso arquiteto para agendar sua consultoria personalizada.
+          <div className="mb-4 h-[300px] overflow-y-auto pr-2">
+            {messages.map((msg) => (
+              <div 
+                key={msg.id} 
+                className={`mb-3 max-w-[80%] ${
+                  msg.sender === 'user' 
+                    ? 'ml-auto bg-primary/20 text-white rounded-br-lg rounded-bl-lg rounded-tl-lg' 
+                    : 'mr-auto bg-black/30 text-white/90 rounded-br-lg rounded-bl-lg rounded-tr-lg'
+                } p-3`}
+              >
+                <p className="text-sm">{msg.text}</p>
+                <span className="block text-xs text-white/40 mt-1">
+                  {msg.sender === 'user' ? 'Você' : 'Especialista'}
+                </span>
+              </div>
+            ))}
+            <div ref={messagesEndRef} />
           </div>
           
-          <form className="space-y-4" onSubmit={(e) => {
-            e.preventDefault();
-            const formData = new FormData(e.target);
-            const message = formData.get("message") as string;
-            if (message.trim()) {
-              sendMessage(message);
-              setIsChatOpen(false);
-              e.target.reset();
-            }
-          }}>
-            <div>
-              <label className="block text-white/70 mb-1 font-mono text-xs">Sua mensagem</label>
+          <form 
+            className="space-y-3" 
+            onSubmit={(e) => {
+              e.preventDefault();
+              sendMessage();
+            }}
+          >
+            <div className="flex items-center">
               <textarea
-                name="message"
-                rows="4"
-                className="w-full bg-black/30 border border-white/10 rounded-md px-3 py-2 text-white placeholder-white/40 focus:border-primary focus:outline-none"
-                placeholder="Descreva seu projeto ou dúvidas..."
-                required
-              ></textarea>
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                onKeyDown={handleKeyDown}
+                rows="2"
+                placeholder="Digite sua mensagem..."
+                className="flex-1 min-h-[44px] w-full bg-black/30 border border-white/10 rounded-md px-3 py-2 text-white placeholder-white/40 focus:border-primary focus:outline-none resize-none"
+                disabled={isLoading}
+              />
+              {!isLoading && (
+                <button
+                  type="submit"
+                  className="ml-2 px-3 py-2 bg-primary text-white rounded-md hover:bg-primary/90 transition-colors font-mono text-xs uppercase tracking-wider"
+                >
+                  Enviar
+                </button>
+              )}
+              {isLoading && (
+                <div className="ml-2 h-4 w-4 border-2 border-primary border-t-transparent border-r-transparent border-b-primary animate-spin rounded-full"/>
+              )}
             </div>
-            <button
-              type="submit"
-              className="w-flex items-center justify-center px-4 py-2 bg-primary text-white rounded-md hover:bg-primary/90 transition-colors font-mono text-xs uppercase tracking-wider"
-            >
-              Enviar mensagem
-            </button>
           </form>
         </div>
       </div>
     </div>
   );
 };
-
-async function sendMessage(message: string) {
-  try {
-    const chatId = crypto.randomUUID();
-    const response = await fetch("https://webhook-vpslocal.inventiia.com.br/webhook/arquitetos", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ chatId, message }),
-    });
-    
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    
-    // Show success toast
-    if (typeof window !== 'undefined') {
-      // Import sonner toast dynamically to avoid SSR issues
-      const { toast } = await import("sonner");
-      toast.success("Mensagem enviada com sucesso!");
-    }
-  } catch (error) {
-    console.error("Failed to send message:", error);
-    if (typeof window !== 'undefined') {
-      const { toast } = await import("sonner");
-      toast.error("Erro ao enviar mensagem. Tente novamente.");
-    }
-  }
-}
 
 export default CTAFixed;
