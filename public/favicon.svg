@@ -1,13 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
-  <rect width="512" height="512" rx="96" fill="#121214"/>
-  <rect x="16" y="16" width="480" height="480" rx="80" fill="none" stroke="#823829" stroke-width="12" opacity="0.3"/>
-  <g fill="none" stroke-linecap="square" stroke-linejoin="miter">
-    <!-- E Architecture structure -->
-    <path d="M 140 150 H 360" stroke="#823829" stroke-width="36"/>
-    <path d="M 140 150 V 362" stroke="#823829" stroke-width="36"/>
-    <path d="M 140 256 H 310" stroke="#823829" stroke-width="36"/>
-    <path d="M 140 362 H 360" stroke="#823829" stroke-width="36"/>
-    <!-- C Architecture line overlay -->
-    <path d="M 370 200 H 260 V 312 H 370" stroke="#FFFFFF" stroke-width="28" opacity="0.95"/>
+  <!-- Fundo sólido preservado na totalidade -->
+  <rect width="512" height="512" fill="#0D0D0E" />
+  <rect width="512" height="512" fill="#121214" />
+  
+  <!-- Borda sutil em tom terracota mantendo a estrutura da imagem -->
+  <rect x="24" y="24" width="464" height="464" fill="none" stroke="#823829" stroke-width="8" opacity="0.4"/>
+  
+  <!-- Símbolo Monograma Estúdio Cerrado -->
+  <g fill="none" stroke-linecap="square">
+    <path d="M 130 140 H 380" stroke="#823829" stroke-width="40"/>
+    <path d="M 130 140 V 372" stroke="#823829" stroke-width="40"/>
+    <path d="M 130 256 H 320" stroke="#823829" stroke-width="40"/>
+    <path d="M 130 372 H 380" stroke="#823829" stroke-width="40"/>
+    <path d="M 380 190 H 250 V 322 H 380" stroke="#EAEAEA" stroke-width="32" opacity="0.95"/>
   </g>
 </svg>
