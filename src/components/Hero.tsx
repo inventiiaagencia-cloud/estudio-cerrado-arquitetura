@@ -33,7 +33,7 @@ const Hero = () => {
             Projetos que pertencem ao lugar onde nascem.
           </h1>
           <p className="text-white/60 text-sm mb-4">Clique e mude sua experiencia</p>
-          <div className="flex items-center gap-1 border border-white/10 px-2 py-0.5">
+          <div className="flex items-center justify-center gap-1 border border-white/10 px-1 py-0.5">
             {/* Crepúsculo button on left (default active) */}
             <button
               onClick={() => setIsNight(true)}
