@@ -1,6 +1,9 @@
 import { Phone } from "lucide-react";
+import { useState } from "react";
 
 const Hero = () => {
+  const [isNight, setIsNight] = useState(false);
+
   return (
     <div className="relative w-full">
       {/* Video de fundo – pré-carregado e com placeholder para carregamento rápido */}
@@ -13,6 +16,11 @@ const Hero = () => {
         preload="auto"
         poster="/videos/videohero-poster.jpg" /* você pode colocar uma imagem miniatura aqui */
         className="absolute inset-0 w-full h-full object-cover"
+        style={{
+          filter: isNight
+            ? 'brightness(0.55) saturate(0.8) hue-rotate(-6deg) contrast(1.1)'
+            : 'none'
+        }}
       >
         <source src="/videos/videohero.mp4" type="video/mp4" />
         Seu navegador não suporta a tag de vídeo.
@@ -29,12 +37,22 @@ const Hero = () => {
           </h1>
           <div className="flex items-center gap-1 border border-white/10 p-1">
             <button
-              className="px-5 py-1.5 text-[9px] font-mono uppercase tracking-[0.2em] transition-all bg-black/50 text-muted-foreground hover:text-white hover:bg-black/60"
+              onClick={() => setIsNight(false)}
+              className={`px-5 py-1.5 text-[9px] font-mono uppercase tracking-[0.2em] transition-all ${
+                !isNight
+                  ? "bg-primary text-white"
+                  : "bg-black/50 text-muted-foreground hover:text-white hover:bg-black/60"
+              }`}
             >
               Luz do Dia
             </button>
             <button
-              className="px-5 py-1.5 text-[9px] font-mono uppercase tracking-[0.2em] transition-all bg-black/50 text-muted-foreground hover:text-white hover:bg-black/60"
+              onClick={() => setIsNight(true)}
+              className={`px-5 py-1.5 text-[9px] font-mono uppercase tracking-[0.2em] transition-all ${
+                isNight
+                  ? "bg-primary text-white"
+                  : "bg-black/50 text-muted-foreground hover:text-white hover:bg-black/60"
+              }`}
             >
               Crepúsculo
             </button>
