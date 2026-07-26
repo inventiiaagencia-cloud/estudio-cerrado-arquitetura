@@ -7,7 +7,7 @@ const projects = [
     city: "São Paulo, SP",
     year: 2022,
     coordinates: "23°33'S 46°38'W",
-    praise: "Integração sublime com a paisagem do cerrado",
+    praise: "Estrutura em balanço com concreto aparente e jardins integrados",
     images: {
       day: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
       night: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
@@ -22,10 +22,10 @@ const projects = [
     city: "Chapada dos Veadeiros, GO",
     year: 2021,
     coordinates: "14°05'S 46°38'W",
-    praise: "Refúgio imerso no cerrado central do Brasil",
+    praise: "Arquitetura em madeira e pedra integrada à vegetação nativa do Planalto Central",
     images: {
-      day: "https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-      night: "https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+      day: "https://images.unsplash.com/photo-1518780664697-55e3ad937233?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+      night: "https://images.unsplash.com/photo-1518780664697-55e3ad937233?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
     },
     span: "col-span-12 md:col-span-6",
     height: "h-[36vh] md:h-[60vh]",
@@ -37,7 +37,7 @@ const projects = [
     city: "Rio de Janeiro, RJ",
     year: 2023,
     coordinates: "22°54'S 43°12'W",
-    praise: "Transparência que dialoga com a luz única da cidade maravilhosa",
+    praise: "Panos de vidro e transparência total com vista para a vegetação tropical",
     images: {
       day: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
       night: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
@@ -52,10 +52,10 @@ const projects = [
     city: "Tiradentes, MG",
     year: 2020,
     coordinates: "21°07'S 44°14'W",
-    praise: "Resgate da sabedoria construtiva do barro colonial",
+    praise: "Paredes em taipa e tons terrosos em sintonia com a tradição mineira",
     images: {
-      day: "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-      night: "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+      day: "https://images.unsplash.com/photo-1600585152220-90363fe7e115?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+      night: "https://images.unsplash.com/photo-1600585152220-90363fe7e115?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
     },
     span: "col-span-12 md:col-span-4",
     height: "h-[40vh] md:h-[50vh]",
@@ -67,7 +67,7 @@ const projects = [
     city: "Belo Horizonte, MG",
     year: 2023,
     coordinates: "19°55'S 43°56'W",
-    praise: "Horizontes ampliados que celebram a topografia única de Belo Horizonte",
+    praise: "Planta suspensa com raia e vista aberta para o relevo das montanhas",
     images: {
       day: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
       night: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
@@ -82,7 +82,7 @@ const projects = [
     city: "Petrópolis, RJ",
     year: 2024,
     coordinates: "22°30'S 43°10'W",
-    praise: "Presença serrana que respeita a majestade da Mata Atlântica",
+    praise: "Madeira e pedra encravadas na encosta da Mata Atlântica",
     images: {
       day: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
       night: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
