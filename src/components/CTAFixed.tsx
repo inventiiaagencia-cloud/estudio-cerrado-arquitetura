@@ -2,9 +2,7 @@ import { MessageSquare, Send, X, Sparkles, Building2 } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 
 const QUICK_PROMPTS = [
-  "Gostaria de agendar uma consultoria",
-  "Como funciona o projeto sob medida?",
-  "Tenho um terreno e quero construir"
+  "Gostaria de agendar uma consultoria"
 ];
 
 const CTAFixed = () => {
@@ -192,7 +190,7 @@ const CTAFixed = () => {
                   </p>
 
                   <div className="w-full space-y-2">
-                    <span className="text-[10px] font-mono uppercase tracking-widest text-white/30 block text-left mb-1">Sugestões de início:</span>
+                    <span className="text-[10px] font-mono uppercase tracking-widest text-white/30 block text-left mb-1">Sugestão de início:</span>
                     {QUICK_PROMPTS.map((prompt, idx) => (
                       <button
                         key={idx}
