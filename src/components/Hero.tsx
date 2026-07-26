@@ -27,14 +27,17 @@ const Hero = () => {
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif text-white mb-8 leading-[1.1] tracking-tight">
             Projetos que pertencem ao lugar onde nascem.
           </h1>
-          <div className="flex justify-center">
-            <a
-              href="https://wa.me/5511910183401"
-              className="flex items-center gap-3 px-10 py-5 border border-primary bg-primary/10 hover:bg-primary transition-all duration-500 text-[10px] md:text-xs font-mono uppercase tracking-[0.3em] text-white"
+          <div className="flex items-center gap-1 border border-white/10 p-1">
+            <button
+              className="px-5 py-1.5 text-[9px] font-mono uppercase tracking-[0.2em] transition-all bg-black/50 text-muted-foreground hover:text-white hover:bg-black/60"
             >
-              <Phone className="h-4 w-4" />
-              Falar no WhatsApp
-            </a>
+              Luz do Dia
+            </button>
+            <button
+              className="px-5 py-1.5 text-[9px] font-mono uppercase tracking-[0.2em] transition-all bg-black/50 text-muted-foreground hover:text-white hover:bg-black/60"
+            >
+              Crepúsculo
+            </button>
           </div>
         </div>
       </div>
