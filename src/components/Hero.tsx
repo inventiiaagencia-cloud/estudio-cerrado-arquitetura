@@ -26,9 +26,6 @@ const Hero = () => {
         Seu navegador não suporta a tag de vídeo.
       </video>
 
-      {/* Overlay escuro */}
-      <div className="absolute inset-0 bg-black/50"></div>
-
       {/* Conteúdo */}
       <div className="relative flex min-h-screen w-full flex-col items-center justify-center text-center px-6 py-20">
         <div className="max-w-4xl mx-auto">
