@@ -51,32 +51,21 @@ const CTAFixed = () => {
         throw new Error(`HTTP ${response.status}: ${errorText}`);
       }
 
-      // Simulate bot response after delay
-      setTimeout(() => {
-        const botResponses = [
-          "Olá! Sou o assistente do Estúdio Cerrado. Como posso ajudá-lo hoje?",
-          "Nossos projetos são sempre únicos e feitos sob medida para cada terreno.",
-          "Trabalhamos com materialidade honesta e conforto bioclimático em todos nossos projetos.",
-          "Para agendar uma consultoria, preciso saber um pouco mais sobre seu projeto e localização.",
-          "Você já tem um terreno em mente ou está procurando por um?",
-          "Nossa equipe acompanha toda a obra para garantir a excelência executiva.",
-          "Projetamos espaços que dialogam com a paisagem e a luz natural do local.",
-          "Cada projeto começa com uma visita ao terreno para entender suas particularidades.",
-          "Utilizamos concreto, pedra, madeira e barro em sua essência pura.",
-          "Estamos prontos para criar um espaço que pertença ao lugar onde nasce."
-        ];
-        
-        const randomResponse = botResponses[Math.floor(Math.random() * botResponses.length)];
-        
-        const botMessage = {
-          id: Date.now().toString() + 'b',
-          text: randomResponse,
-          sender: 'bot'
-        };
+      // Get the actual response from the webhook
+      const data = await response.json();
+      
+      // Assuming the webhook returns a response with a message property
+      // Adjust this based on what your webhook actually returns
+      const botMessageText = data.message || data.response || "Desculpe, não consegui processar sua mensagem.";
+      
+      const botMessage = {
+        id: Date.now().toString() + 'b',
+        text: botMessageText,
+        sender: 'bot'
+      };
 
-        setMessages(prev => [...prev, botMessage]);
-        setIsLoading(false);
-      }, 1500);
+      setMessages(prev => [...prev, botMessage]);
+      setIsLoading(false);
     } catch (error) {
       console.error("Failed to send message:", error);
       setIsLoading(false);
