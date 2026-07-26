@@ -32,6 +32,7 @@ const Hero = () => {
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif text-white mb-8 leading-[1.1] tracking-tight">
             Projetos que pertencem ao lugar onde nascem.
           </h1>
+          <p className="text-white/60 text-sm mb-4">Clique e mude sua experiencia</p>
           <div className="flex items-center gap-1 border border-white/10 px-2 py-0.5">
             {/* Crepúsculo button on left (default active) */}
             <button
